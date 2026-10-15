@@ -42,5 +42,21 @@ namespace HW_4.Controllers
         {
             return View(bookedCars);
         }
+
+        [HttpPost]
+        public IActionResult Unbook(int id)
+        {
+            for (int i = 0; i < bookedCars.Count; i++)
+            {
+                if (bookedCars[i].Id == id)
+                {
+                    var car = bookedCars[i];
+                    bookedCars.RemoveAt(i);
+                    availableCars.Add(car);
+                    break;
+                }
+            }
+            return RedirectToAction(nameof(Booked));
+        }
     }
 }

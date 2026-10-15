@@ -26,6 +26,7 @@ else
                     <th>Car Name</th>
                     <th>Price Per Day</th>
                     <th>Status</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,6 +38,12 @@ else
                         <td>PKR @car.PricePerDay</td>
                         <td>
                             <span class="badge bg-warning text-dark">Booked</span>
+                        </td>
+                        <td>
+                            <form asp-controller="Cars" asp-action="Unbook" method="post" class="d-inline">
+                                <input type="hidden" name="id" value="@car.Id" />
+                                <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                            </form>
                         </td>
                     </tr>
                 }
